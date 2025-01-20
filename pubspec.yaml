@@ -43,6 +43,7 @@ dependencies:
   flutter_svg: ^2.0.17
   dio: ^5.7.0
   dartz: ^0.10.1
+  cached_network_image: ^3.4.1
 
 dev_dependencies:
   injectable_generator:  

@@ -14,7 +14,7 @@ class ProductsGridview extends StatelessWidget {
         mainAxisSpacing: 10,
         childAspectRatio: 1 / 2,
       ),
-      itemBuilder: (context, index) => const ProductWidget(),
+      itemBuilder: (context, index) => const ProductWidget(product: ,),
       itemCount: 10,
     );
   }

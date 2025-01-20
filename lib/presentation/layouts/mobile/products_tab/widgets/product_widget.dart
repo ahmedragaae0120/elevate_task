@@ -1,11 +1,13 @@
 import 'package:elevate_task/core/utlis/app_colors.dart';
 import 'package:elevate_task/core/utlis/config.dart';
 import 'package:elevate_task/core/utlis/text_styles.dart';
+import 'package:elevate_task/data/models/product_model/product_Response.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductWidget extends StatelessWidget {
-  const ProductWidget({super.key});
+  final ProductResponse product;
+  const ProductWidget({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,21 @@ class ProductWidget extends StatelessWidget {
           Stack(
             alignment: Alignment.topRight,
             children: [
+              // ClipRRect(
+              //     borderRadius: const BorderRadius.only(
+              //         topLeft: Radius.circular(15),
+              //         topRight: Radius.circular(15)),
+              //     child: CachedNetworkImage(
+              //       imageUrl: product.thumbnail ?? "",
+              //       errorWidget: (context, url, error) =>
+              //           const Icon(Icons.error),
+              //       width: double.infinity,
+              //       height: double.infinity,
+              //       fit: BoxFit.fill,
+              //       progressIndicatorBuilder: (context, url, progress) =>
+              //           const Center(
+              //               child: CircularProgressIndicator.adaptive()),
+              //     )),
               Image.asset(
                 "assets/PeterParker.jpg",
                 fit: BoxFit.fill,
@@ -44,26 +61,26 @@ class ProductWidget extends StatelessWidget {
                 children: [
                   Config.spaceSmall,
                   Text(
-                    "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+                    product.title ?? "",
                     overflow: TextOverflow.ellipsis,
                     style: TextStyles.productTitleTextStyle,
                   ),
                   Text(
-                    "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+                    product.description ?? "",
                     overflow: TextOverflow.ellipsis,
                     style: TextStyles.productTitleTextStyle,
                   ),
                   Config.spaceSmall,
                   Row(children: [
                     Text(
-                      "EGP 1200",
+                      product.price.toString(),
                       style: TextStyles.productTitleTextStyle,
                     ),
                     const SizedBox(
                       width: 15,
                     ),
                     Text(
-                      "1200 EGP",
+                     product.price.toString(),
                       style: TextStyles.dicountTextStyle,
                     ),
                   ]),
@@ -72,7 +89,7 @@ class ProductWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
-                          "Review (rating)",
+                          "Review (${product.rating?.rate??""})",
                           style: TextStyles.productTitleTextStyle
                               .copyWith(fontSize: 16),
                         ),
