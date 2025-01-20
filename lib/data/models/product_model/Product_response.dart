@@ -8,8 +8,8 @@ import 'Rating.dart';
 /// image : "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
 /// rating : {"rate":3.9,"count":120}
 
-class ProductModel {
-  ProductModel({
+class ProductResponse {
+  ProductResponse({
       this.id, 
       this.title, 
       this.price, 
@@ -18,7 +18,7 @@ class ProductModel {
       this.image, 
       this.rating,});
 
-  ProductModel.fromJson(dynamic json) {
+  ProductResponse.fromJson(dynamic json) {
     id = json['id'];
     title = json['title'];
     price = json['price'];

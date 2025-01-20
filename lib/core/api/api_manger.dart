@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:elevate_task/core/constants.dart';
+import 'package:injectable/injectable.dart';
 
+@singleton
 class ApiManger {
   static late Dio dio;
   static init() {
@@ -8,8 +10,9 @@ class ApiManger {
   }
 
   Future<Response> getReguest(
-      {required String baseUrl, Map<String, dynamic>? queryParameters}) async {
-    var response = await dio.get(baseUrl, queryParameters: queryParameters);
+      {required String endpoints,
+      Map<String, dynamic>? queryParameters}) async {
+    var response = await dio.get(endpoints, queryParameters: queryParameters);
     return response;
   }
 }
