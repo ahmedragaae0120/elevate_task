@@ -6,8 +6,8 @@ import 'package:elevate_task/presentation/observer/blocObserve.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  ApiManger.init();
   configureDependencies();
+  ApiManger.init();
   Bloc.observer = MyBlocObserver();
   runApp(const Myapp());
 }

@@ -7,16 +7,22 @@ import 'package:injectable/injectable.dart';
 
 @Injectable(as: ProductsDatasourceContract)
 class ProductsDatasourceImpl extends ProductsDatasourceContract {
-  ApiManger apiManger;
   @factoryMethod
+  final ApiManger apiManger;
   ProductsDatasourceImpl(this.apiManger);
 
   @override
-  Future<Either<ProductResponse, String>> getAllproduct() async {
+  Future<Either<List<ProductResponse>, String>> getAllproduct() async {
     try {
       var response =
           await apiManger.getReguest(endpoints: ApiEndpoints.productsEndPoint);
-      ProductResponse productResponse = ProductResponse.fromJson(response.data);
+      print("data: $response");
+      List<ProductResponse> productResponse = (response.data as List)
+          .map((item) => ProductResponse.fromJson(item))
+          .toList();
+      print("data after: $productResponse");
+      // List<ProductResponse> productResponse =
+      //     ProductResponse.fromJson(response.data);
       return Left(productResponse);
     } catch (error) {
       return Right(error.toString());
